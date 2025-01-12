@@ -16,8 +16,9 @@ type WorkerDetailsParams = {
   };
 };
 
-export default function WorkerDetailsScreen() {
+export default function WorkerDetails() {
   const route = useRoute<RouteProp<WorkerDetailsParams, "WorkerDetails">>();
+  console.log("worker details route data: ", route)
   const {
     id,
     name,
@@ -89,16 +90,16 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#333",
+    // color: "#333",
   },
   skill: {
     fontSize: 16,
-    color: "#555",
+    // color: "#555",
     marginTop: 4,
   },
   rating: {
     fontSize: 16,
-    color: "#777",
+    // color: "#777",
     marginTop: 4,
   },
   contactButton: {
@@ -111,18 +112,19 @@ const styles = StyleSheet.create({
   },
   bio: {
     fontSize: 14,
-    color: "#555",
+    // color: "#555",
   },
   review: {
+    rowGap: 4,
     marginBottom: 10,
   },
   reviewer: {
     fontSize: 14,
     fontWeight: "bold",
-    color: "#333",
+    // color: "#333",
   },
   noReviews: {
     fontSize: 14,
-    color: "#777",
+    // color: "#777",
   },
 });

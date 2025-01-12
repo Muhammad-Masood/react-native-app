@@ -34,6 +34,8 @@ export default function RootLayout() {
         <Stack.Screen name="+not-found" />
         <Stack.Screen name='jobs' options={{ title: 'Jobs' }} />
         <Stack.Screen name='workers' options={{ title: 'Workers' }} />
+        <Stack.Screen name='workerDetails' options={{ title: 'Worker Details' }} />
+        <Stack.Screen name='jobDetails' options={{ title: 'Job Details' }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>

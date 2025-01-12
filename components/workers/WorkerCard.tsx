@@ -2,16 +2,22 @@ import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Avatar, Card, Text, IconButton } from "react-native-paper";
 import { WorkerCardType } from "@/constants/Types";
+import { useNavigation } from "@react-navigation/native";
 
 const WorkerCard = ({ workerCardData }: { workerCardData: WorkerCardType }) => {
-  const { id, name, skill, rating } = workerCardData;
+  const { id, name, skill, rating, profileImage } = workerCardData;
+  const navigation = useNavigation<any>();
 
   return (
-    <Card key={id} style={styles.card}>
+    <Card
+      key={id}
+      style={styles.card}
+      onPress={() => navigation.navigate("workerDetails", workerCardData)}
+    >
       <View style={styles.cardContent}>
         <Avatar.Image
           size={60}
-          source={require('@/assets/images/user.jpg')}
+          source={{ uri: profileImage }}
           style={styles.avatar}
         />
         <View style={styles.info}>
