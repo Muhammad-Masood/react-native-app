@@ -9,14 +9,42 @@ import { Navigator } from "expo-router";
 import { useNavigation } from "@react-navigation/native";
 import WorkerCard from "@/components/workers/WorkerCard";
 import JobCard from "@/components/jobs/JobCard";
+import { JobDetailsType } from "@/constants/Types";
 
 export default function HomeScreen() {
   const navigation = useNavigation<any>();
 
-  const recentJobs = [
-    { id: 1, title: "Fix Broken Light", location: "Downtown", pay: "$50" },
-    { id: 2, title: "Unclog Kitchen Sink", location: "Suburbs", pay: "$40" },
-    { id: 3, title: "Assemble Bookshelf", location: "Uptown", pay: "$30" },
+  const recentJobs: JobDetailsType[] = [
+    {
+      id: 1,
+      title: "Fix Broken Light",
+      location: "Downtown",
+      budget: "$50",
+      contact: "123-456-7890",
+      postedOn: "2023-08-01",
+      postedBy: "John Doe",
+      description: "Need to fix a broken light in my apartment.",
+    },
+    {
+      id: 2,
+      title: "Unclog Kitchen Sink",
+      location: "Suburbs",
+      budget: "$40",
+      contact: "987-654-3210",
+      postedOn: "2023-08-02",
+      postedBy: "Jane Smith",
+      description: "Need to unclog the kitchen sink in my home.",
+    },
+    {
+      id: 3,
+      title: "Assemble Bookshelf",
+      location: "Uptown",
+      budget: "$30",
+      contact: "555-555-5555",
+      postedOn: "2023-08-03",
+      postedBy: "Tom Brown",
+      description: "Need to assemble a bookshelf for my living room.",
+    },
   ];
 
   const topWorkers = [
@@ -62,7 +90,7 @@ export default function HomeScreen() {
           <Button
             icon="account-plus"
             mode="contained"
-            onPress={() => console.log("Register or Login")}
+            onPress={() => navigation.navigate("profile")}
             style={styles.authButton}
           >
             Register

@@ -2,33 +2,17 @@ import React from "react";
 import { StyleSheet, View, ScrollView } from "react-native";
 import { Avatar, Text, Button, Card } from "react-native-paper";
 import { RouteProp, useRoute } from "@react-navigation/native";
+import { WorkerDetailsType } from "@/constants/Types";
 
 type WorkerDetailsParams = {
-  WorkerDetails: {
-    id: number;
-    name: string;
-    skill: string;
-    rating: number;
-    bio: string;
-    profileImage: string;
-    contact: string;
-    reviews: { id: number; reviewer: string; comment: string }[];
-  };
+  WorkerDetailsData: WorkerDetailsType;
 };
 
 export default function WorkerDetails() {
-  const route = useRoute<RouteProp<WorkerDetailsParams, "WorkerDetails">>();
-  console.log("worker details route data: ", route)
-  const {
-    id,
-    name,
-    skill,
-    rating,
-    bio,
-    profileImage,
-    contact,
-    reviews,
-  } = route.params;
+  const route = useRoute<RouteProp<WorkerDetailsParams, "WorkerDetailsData">>();
+  console.log("worker details route data: ", route);
+  const { id, name, skill, rating, bio, profileImage, contact, reviews } =
+    route.params;
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -83,6 +67,7 @@ const styles = StyleSheet.create({
   profileContainer: {
     alignItems: "center",
     marginBottom: 20,
+    paddingTop: 20,
   },
   avatar: {
     marginBottom: 10,

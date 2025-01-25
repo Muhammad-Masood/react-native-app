@@ -1,8 +1,19 @@
-type JobCardType = {
+// type JobCardType = {
+//   id: number;
+//   title: string;
+//   location: string;
+//   pay: string;
+// };
+
+type JobDetailsType = {
   id: number;
   title: string;
+  description: string;
+  postedBy: string;
   location: string;
-  pay: string;
+  postedOn: string;
+  budget: string;
+  contact: string;
 };
 
 type ReviewType = {
@@ -11,7 +22,7 @@ type ReviewType = {
   comment: string;
 };
 
-type WorkerCardType = {
+type WorkerDetailsType = {
   id: number;
   name: string;
   skill: string;
@@ -19,7 +30,7 @@ type WorkerCardType = {
   bio: string;
   profileImage: string;
   contact: string;
-  reviews: ReviewType[];
+  reviews: { id: number; reviewer: string; comment: string }[];
 };
 
-export { JobCardType, WorkerCardType };
+export { JobDetailsType, WorkerDetailsType };

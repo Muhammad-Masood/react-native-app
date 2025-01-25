@@ -1,10 +1,11 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { Avatar, Card, Text, IconButton } from "react-native-paper";
-import { WorkerCardType } from "@/constants/Types";
+import { WorkerDetailsType } from "@/constants/Types";
 import { useNavigation } from "@react-navigation/native";
+import { router } from "expo-router";
 
-const WorkerCard = ({ workerCardData }: { workerCardData: WorkerCardType }) => {
+const WorkerCard = ({ workerCardData }: { workerCardData: WorkerDetailsType }) => {
   const { id, name, skill, rating, profileImage } = workerCardData;
   const navigation = useNavigation<any>();
 
