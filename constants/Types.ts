@@ -6,7 +6,7 @@
 // };
 
 type JobDetailsType = {
-  id: number;
+  id: string;
   title: string;
   description: string;
   postedBy: string;
@@ -23,8 +23,8 @@ type ReviewType = {
 };
 
 type WorkerDetailsType = {
-  id: number;
-  name: string;
+  id: string;
+name: string;
   skill: string;
   rating: number;
   bio: string;

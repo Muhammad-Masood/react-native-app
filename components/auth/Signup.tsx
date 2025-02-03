@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -16,7 +16,8 @@ export default function SignUp() {
       await signUp(name, email, password);
       console.log("Sign Up Successfull!");
       navigation.navigate("login");
-    } catch (error) {
+    } catch (error: any) {
+      Alert.alert("Sign Up Failed", error.message);
       console.log(error);
     }
   };

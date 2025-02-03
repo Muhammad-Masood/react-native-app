@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Linking } from "react-native";
 import { Card, Text, Button } from "react-native-paper";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { JobDetailsType } from "@/constants/Types";
@@ -20,6 +20,16 @@ export default function JobDetails() {
     budget,
     contact,
   } = route.params;
+
+  const handleContactPress = () => {
+    if (contact) {
+      Linking.openURL(`tel:${contact}`).catch((err) =>
+        console.error("Error opening dialer:", err)
+      );
+    } else {
+      console.warn("No contact number available");
+    }
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -45,7 +55,7 @@ export default function JobDetails() {
 
       <Button
         mode="contained"
-        onPress={() => console.log(`Contacting ${contact}`)}
+        onPress={handleContactPress}
         style={styles.contactButton}
       >
         Contact Poster

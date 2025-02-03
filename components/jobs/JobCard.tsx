@@ -11,7 +11,7 @@ const JobCard = ({jobCardData}:{jobCardData:JobDetailsType}) => {
       <Card.Content>
         <Text style={styles.cardTitle}>{jobCardData.title}</Text>
         <Text>{jobCardData.location}</Text>
-        <Text>{jobCardData.budget}</Text>
+        <Text>{jobCardData.budget} Rs</Text>
       </Card.Content>
     </Card>
   );

@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -33,15 +34,23 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-        <Stack.Screen name="workerDetails" options={{ title: "Worker Details"}}/>
-        <Stack.Screen name="jobDetails" options={{ title: "Job Details"}}/>
-        <Stack.Screen name="signup" options={{ title: "Sign Up"}}/>
-        <Stack.Screen name="login" options={{ title: "Login"}}/>
-      </Stack>
-      <StatusBar style="auto" />
+      <AuthProvider>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+          <Stack.Screen
+            name="workerDetails"
+            options={{ title: "Worker Details" }}
+          />
+          <Stack.Screen name="jobDetails" options={{ title: "Job Details" }} />
+          <Stack.Screen name="signup" options={{ title: "Sign Up" }} />
+          <Stack.Screen name="login" options={{ title: "Login" }} />
+          <Stack.Screen name="profile" options={{ title: "Profile" }} />
+          <Stack.Screen name="postJob" options={{ title: "Post a Job" }} />
+          <Stack.Screen name="addWorker" options={{ title: "Become a Worker" }} />
+        </Stack>
+        <StatusBar style="auto" />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

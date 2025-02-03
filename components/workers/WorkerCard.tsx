@@ -5,7 +5,11 @@ import { WorkerDetailsType } from "@/constants/Types";
 import { useNavigation } from "@react-navigation/native";
 import { router } from "expo-router";
 
-const WorkerCard = ({ workerCardData }: { workerCardData: WorkerDetailsType }) => {
+const WorkerCard = ({
+  workerCardData,
+}: {
+  workerCardData: WorkerDetailsType;
+}) => {
   const { id, name, skill, rating, profileImage } = workerCardData;
   const navigation = useNavigation<any>();
 
@@ -24,7 +28,9 @@ const WorkerCard = ({ workerCardData }: { workerCardData: WorkerDetailsType }) =
         <View style={styles.info}>
           <Text style={styles.name}>{name}</Text>
           <Text style={styles.skill}>{skill}</Text>
-          <Text style={styles.rating}>⭐ {rating.toFixed(1)} / 5</Text>
+          <Text style={styles.rating}>
+            {rating === 0 ? "Recently joined" : `⭐ ${rating.toFixed(1)} / 5`}
+          </Text>
         </View>
         <IconButton
           icon="chevron-right"

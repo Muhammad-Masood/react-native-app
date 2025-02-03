@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import { TextInput, Button, Text } from "react-native-paper";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -15,8 +15,9 @@ export default function Login() {
       await login(email, password);
       console.log("Login Successfull!");
       navigation.navigate("profile");
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      Alert.alert("Login Failed", error.message);
     }
   };
 

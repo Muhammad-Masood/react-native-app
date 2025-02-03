@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, ScrollView } from "react-native";
+import { StyleSheet, View, ScrollView, Linking } from "react-native";
 import { Avatar, Text, Button, Card } from "react-native-paper";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { WorkerDetailsType } from "@/constants/Types";
@@ -14,6 +14,16 @@ export default function WorkerDetails() {
   const { id, name, skill, rating, bio, profileImage, contact, reviews } =
     route.params;
 
+  const handleContactPress = () => {
+    if (contact) {
+      Linking.openURL(`tel:${contact}`).catch((err) =>
+        console.error("Error opening dialer:", err)
+      );
+    } else {
+      console.warn("No contact number available");
+    }
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.profileContainer}>
@@ -24,10 +34,13 @@ export default function WorkerDetails() {
         />
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.skill}>{skill}</Text>
-        <Text style={styles.rating}>⭐ {rating.toFixed(1)} / 5</Text>
+        <Text style={styles.rating}>
+          {" "}
+          {rating === 0 ? "Recently joined" : `⭐ ${rating.toFixed(1)} / 5`}
+        </Text>
         <Button
           mode="contained"
-          onPress={() => console.log(`Contacting ${contact}`)}
+          onPress={handleContactPress}
           style={styles.contactButton}
         >
           Contact
